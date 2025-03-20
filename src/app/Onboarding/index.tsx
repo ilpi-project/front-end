@@ -3,12 +3,12 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useRouter } from 'expo-router';
 
-import { styles } from './styles';
+import styles from './styles';
 
 export default function Onboarding() {
     const router = useRouter();
     const handleSkip = () => {
-        router.push('/Login');
+        router.push('/Login'); // router.replace('Login');
     };
     return (
         <Swiper
@@ -43,7 +43,7 @@ export default function Onboarding() {
             </View>
             <View style={styles.container}>
                 <View style={styles.infosContainer}>
-                    <Image source={require('../assets/images/onboarding-img-3.png')} style={styles.smallImage} />
+                    <Image source={require('../assets/images/logo.png')} style={styles.smallImage} />
                     <Text style={styles.text}>
                         Crie sua conta e tenha acesso a todas as informações sobre nosso instituto!
                     </Text>
