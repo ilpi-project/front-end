@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, Image, SafeAreaView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useRouter } from 'expo-router';
 import styles from './styles';
 import Button from '../components/Button';
+import colors from '../config/colors';
 
 export default function Onboarding() {
     const router = useRouter();
@@ -29,18 +30,14 @@ export default function Onboarding() {
                 ref={swiperRef}
                 loop={false}
                 showsPagination={true}
-                dotColor="#A9C087"
-                activeDotColor="#6B9829"
+                dotColor={colors.green[100]}
+                activeDotColor={colors.green[400]}
                 activeDotStyle={{ width: 20 }}
                 paginationStyle={{ bottom: 30 }}
                 onIndexChanged={(index) => setCurrentIndex(index)}>
                 <View style={styles.slideContainer}>
                     <View style={styles.slideHeader}>
-                        <Button
-                            text={'Pular'}
-                            variant={'secondary'}
-                            onPress={handleSkip}
-                        />
+                        <Button text={'Pular'} variant={'secondary'} onPress={handleSkip} />
                     </View>
                     <View style={styles.infosContainer}>
                         <Image source={require('../assets/images/onboarding-img-1.png')} style={styles.image1} />
@@ -53,11 +50,7 @@ export default function Onboarding() {
                 </View>
                 <View style={styles.slideContainer}>
                     <View style={styles.slideHeader}>
-                        <Button
-                            text={'Pular'}
-                            variant={'secondary'}
-                            onPress={handleSkip}
-                        />
+                        <Button text={'Pular'} variant={'secondary'} onPress={handleSkip} />
                     </View>
                     <View style={styles.infosContainer}>
                         <Image source={require('../assets/images/onboarding-img-2.png')} style={styles.image2} />

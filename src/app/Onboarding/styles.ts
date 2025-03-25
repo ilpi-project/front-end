@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
 import FONT from '@/app/config/fonts';
+import colors from '../config/colors';
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5E6CC',
+        backgroundColor: colors.beige,
     },
     slideContainer: {
         flex: 1,
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         fontFamily: FONT.OXYGEN_REGULAR,
         fontSize: 16,
         width: '100%',
-        color: '#333',
+        color: colors.black,
         marginBottom: 5,
         letterSpacing: 0.65,
         textAlign: 'center',

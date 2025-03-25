@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
+import colors from './config/colors';
 
 export default function Index() {
     const [appReady, setAppReady] = useState(false);
@@ -11,7 +12,7 @@ export default function Index() {
     const [fontsLoaded] = useFonts({
         'Oxygen-Light': require('@/app/assets/fonts/Oxygen-Light.ttf'),
         'Oxygen-Regular': require('@/app/assets/fonts/Oxygen-Regular.ttf'),
-        'Oxygen-Bold': require('@/app/assets/fonts/Oxygen-Bold.ttf')
+        'Oxygen-Bold': require('@/app/assets/fonts/Oxygen-Bold.ttf'),
     });
 
     useEffect(() => {
@@ -33,9 +34,9 @@ export default function Index() {
 
     if (!appReady) {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator size="large" color="#6B9829" />
-                <Text>Carregando...</Text>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.beige }}>
+                <StatusBar style="dark" />
+                <ActivityIndicator size="large" color={colors.green[400]} />
             </View>
         );
     }

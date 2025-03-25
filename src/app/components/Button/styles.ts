@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import FONT from '@/app/config/fonts';
+import colors from '@/app/config/colors';
 
 const styles = StyleSheet.create({
     button: {
@@ -12,18 +13,18 @@ const styles = StyleSheet.create({
         fontFamily: FONT.OXYGEN_BOLD,
     },
     primary: {
-        backgroundColor: '#2E5E3D',
+        backgroundColor: colors.green[800],
     },
     secondary: {
         backgroundColor: 'transparent',
     },
     textPrimary: {
         fontSize: 20,
-        color: '#fff',
+        color: colors.white,
     },
     textSecondary: {
         fontSize: 18,
-        color: '#333734',
+        color: colors.black,
     },
 });
 
