@@ -20,18 +20,6 @@ const styles = StyleSheet.create({
         boxSizing: 'border-box',
         justifyContent: 'center',
     },
-    skipButton: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 24,
-        backgroundColor: 'transparent',
-    },
-    skipButtonText: {
-        fontFamily: FONT.OXYGEN_BOLD,
-        color: '#333734',
-        letterSpacing: 1,
-        fontSize: 18,
-    },
     infosContainer: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -78,52 +66,14 @@ const styles = StyleSheet.create({
         paddingVertical: 40,
         justifyContent: 'space-between',
     },
-    nextButton: {
-        backgroundColor: '#2E5E3D',
-        width: '35%',
-        padding: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 24,
-    },
-    nextButtonText: {
-        fontSize: 20,
-        fontFamily: FONT.OXYGEN_BOLD,
-        color: '#fff',
-    },
-    backButton: {
-        width: '35%',
-        padding: 8,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 24,
-        backgroundColor: 'transparent',
-    },
-    backButtonText: {
-        fontSize: 18,
-        fontFamily: FONT.OXYGEN_BOLD,
-        color: '#333734',
-    },
     startButtonContainer: {
         width: '100%',
         position: 'relative',
         bottom: 0,
-        padding: 36,
+        paddingHorizontal: 36,
+        paddingVertical: 40,
         alignItems: 'center',
-    },
-    startButton: {
-        backgroundColor: '#2E5E3D',
-        width: '45%',
-        padding: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 24,
-    },
-    startButtonText: {
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 20,
-    },
+    }
 });
 
 export default styles;

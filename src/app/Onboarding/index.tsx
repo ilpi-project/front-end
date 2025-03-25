@@ -2,13 +2,13 @@ import React, { useRef, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useRouter } from 'expo-router';
-
 import styles from './styles';
+import Button from '../components/Button';
 
 export default function Onboarding() {
     const router = useRouter();
     const handleSkip = () => {
-        router.push('/Login'); // router.replace('Login');
+        router.push('/Login'); // router.replace('/Login');
     };
 
     const swiperRef = useRef<Swiper | null>(null);
@@ -36,9 +36,11 @@ export default function Onboarding() {
                 onIndexChanged={(index) => setCurrentIndex(index)}>
                 <View style={styles.slideContainer}>
                     <View style={styles.slideHeader}>
-                        <TouchableOpacity style={styles.skipButton}>
-                            <Text style={styles.skipButtonText}>Pular</Text>
-                        </TouchableOpacity>
+                        <Button
+                            text={'Pular'}
+                            variant={'secondary'}
+                            onPress={handleSkip}
+                        />
                     </View>
                     <View style={styles.infosContainer}>
                         <Image source={require('../assets/images/onboarding-img-1.png')} style={styles.image1} />
@@ -51,9 +53,11 @@ export default function Onboarding() {
                 </View>
                 <View style={styles.slideContainer}>
                     <View style={styles.slideHeader}>
-                        <TouchableOpacity style={styles.skipButton}>
-                            <Text style={styles.skipButtonText}>Pular</Text>
-                        </TouchableOpacity>
+                        <Button
+                            text={'Pular'}
+                            variant={'secondary'}
+                            onPress={handleSkip}
+                        />
                     </View>
                     <View style={styles.infosContainer}>
                         <Image source={require('../assets/images/onboarding-img-2.png')} style={styles.image2} />
@@ -70,7 +74,7 @@ export default function Onboarding() {
                         <Image source={require('../assets/images/logo.png')} style={styles.logo} />
                         <Text style={styles.title}>Junte-se a nós</Text>
                         <Text style={styles.text}>
-                            Crie sua conta e tenha acesso a todas as informações sobre nosso instituto!{' '}
+                            Crie sua conta e tenha acesso a todas as informações sobre nosso instituto!
                         </Text>
                         <Text style={styles.text}>
                             Conheça nossa história, nossos valores e os serviços que oferecemos.
@@ -84,23 +88,22 @@ export default function Onboarding() {
             {currentIndex < 2 && (
                 <View style={styles.navButtonsContainer}>
                     {currentIndex === 1 && (
-                        <TouchableOpacity onPress={goToPrevious} style={styles.backButton}>
-                            <Text style={styles.backButtonText}>Anterior</Text>
-                        </TouchableOpacity>
+                        <Button
+                            text={'Anterior'}
+                            variant={'secondary'}
+                            onPress={goToPrevious}
+                            style={{ width: '40%' }}
+                        />
                     )}
 
                     {currentIndex < 2 && (
-                        <TouchableOpacity onPress={goToNext} style={styles.nextButton}>
-                            <Text style={styles.nextButtonText}>Próximo</Text>
-                        </TouchableOpacity>
+                        <Button text={'Próximo'} variant={'primary'} onPress={goToNext} style={{ width: '40%' }} />
                     )}
                 </View>
             )}
             {currentIndex === 2 && (
                 <View style={styles.startButtonContainer}>
-                    <TouchableOpacity onPress={handleSkip} style={styles.startButton}>
-                        <Text style={styles.startButtonText}>Vamos lá!</Text>
-                    </TouchableOpacity>
+                    <Button text={'Vamos lá!'} variant={'primary'} onPress={handleSkip} style={{ width: '50%' }} />
                 </View>
             )}
         </SafeAreaView>
