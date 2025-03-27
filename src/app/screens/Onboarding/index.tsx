@@ -3,13 +3,13 @@ import { View, Text, Image, SafeAreaView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useRouter } from 'expo-router';
 import styles from './styles';
-import Button from '../components/Button';
-import colors from '../config/colors';
+import Button from '@/app/components/Button';
+import colors from '@/app/config/colors';
 
 export default function Onboarding() {
     const router = useRouter();
     const handleSkip = () => {
-        router.push('/Login'); // router.replace('/Login');
+        router.push('/screens/Login'); // router.replace('/Login');
     };
 
     const swiperRef = useRef<Swiper | null>(null);
@@ -40,7 +40,7 @@ export default function Onboarding() {
                         <Button text={'Pular'} variant={'secondary'} onPress={handleSkip} />
                     </View>
                     <View style={styles.infosContainer}>
-                        <Image source={require('../assets/images/onboarding-img-1.png')} style={styles.image1} />
+                        <Image source={require('@/app/assets/images/onboarding-img-1.png')} style={styles.image1} />
                         <Text style={styles.title}>Bem-vindo ao ILPI App</Text>
                         <Text style={styles.text}>
                             O ILPI App é uma plataforma digital desenvolvida para facilitar a gestão e o acompanhamento
@@ -53,7 +53,7 @@ export default function Onboarding() {
                         <Button text={'Pular'} variant={'secondary'} onPress={handleSkip} />
                     </View>
                     <View style={styles.infosContainer}>
-                        <Image source={require('../assets/images/onboarding-img-2.png')} style={styles.image2} />
+                        <Image source={require('@/app/assets/images/onboarding-img-1.png')} style={styles.image2} />
                         <Text style={styles.title}>Apoio e bem-estar</Text>
                         <Text style={styles.text}>
                             O aplicativo oferece recursos para familiares, cuidadores e administradores, garantindo um
@@ -64,7 +64,7 @@ export default function Onboarding() {
                 <View style={styles.slideContainer}>
                     <View style={styles.infosContainer}>
                         <View style={styles.slideHeader}></View>
-                        <Image source={require('../assets/images/logo.png')} style={styles.logo} />
+                        <Image source={require('@/app/assets/images/logo.png')} style={styles.logo} />
                         <Text style={styles.title}>Junte-se a nós</Text>
                         <Text style={styles.text}>
                             Crie sua conta e tenha acesso a todas as informações sobre nosso instituto!

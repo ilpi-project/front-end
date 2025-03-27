@@ -1,4 +1,4 @@
-import Onboarding from '@/app/Onboarding';
+import Onboarding from '@/app/screens/Onboarding';
 import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
