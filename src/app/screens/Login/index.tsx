@@ -1,6 +1,5 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
 import Input from '@/app/components/Input';
 import Button from '@/app/components/Button';
@@ -10,8 +9,11 @@ export default function Login() {
     const handleLogin = () => {
         router.push('/screens/Home'); // router.replace('/Home');
     };
+    const handleSignup = () => {
+        router.push('/screens/Signup');
+    };
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Image source={require('@/app/assets/images/logo.png')} style={styles.logo} />
             <View style={styles.inputsContainer}>
                 <Input icon="mail" placeholder="E-mail" keyboardType="email-address" />
@@ -22,8 +24,8 @@ export default function Login() {
             </View>
             <View style={styles.buttonsContainer}>
                 <Button text="Login" variant="primary" style={{ width: '50%' }} onPress={handleLogin} />
-                <Button text="Cadastre-se" variant="secondary" style={{ width: '50%' }} />
+                <Button text="Cadastre-se" variant="secondary" style={{ width: '50%' }} onPress={handleSignup} />
             </View>
-        </SafeAreaView>
+        </View>
     );
 }

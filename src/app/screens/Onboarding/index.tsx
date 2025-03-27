@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { View, Text, Image, SafeAreaView } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useRouter } from 'expo-router';
 import styles from './styles';
@@ -25,7 +25,7 @@ export default function Onboarding() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Swiper
                 ref={swiperRef}
                 loop={false}
@@ -99,6 +99,6 @@ export default function Onboarding() {
                     <Button text={'Vamos lá!'} variant={'primary'} onPress={handleSkip} style={{ width: '50%' }} />
                 </View>
             )}
-        </SafeAreaView>
+        </View>
     );
 }
