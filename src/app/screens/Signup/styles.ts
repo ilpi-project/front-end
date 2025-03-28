@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '@/app/config/colors';
+import FONT from '@/app/config/fonts';
 
 const styles = StyleSheet.create({
     container: {
@@ -11,7 +12,12 @@ const styles = StyleSheet.create({
     logo: {
         height: 180,
         width: 180,
-        marginVertical: 20,
+        marginBottom: 20,
+        marginTop: 44
+    },
+    title: {
+        fontSize: 20,
+        fontFamily: FONT.OXYGEN_BOLD
     },
     inputsContainer: {
         width: '75%',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import styles from './styles';
-import { View, Image, TextInput } from 'react-native';
+import { View, Image, TextInput, Text } from 'react-native';
 import Input from '@/app/components/Input';
 import Button from '@/app/components/Button';
 import { Ionicons } from '@expo/vector-icons';
@@ -33,6 +33,7 @@ export default function Signup() {
     return (
         <View style={styles.container}>
             <Image source={require('@/app/assets/images/logo.png')} style={styles.logo} />
+            <Text style={styles.title}>Crie sua conta</Text>
             <View style={styles.inputsContainer}>
                 <Input icon="person" placeholder="Nome" keyboardType="default" />
                 <Input icon="mail" placeholder="E-mail" keyboardType="email-address" />
