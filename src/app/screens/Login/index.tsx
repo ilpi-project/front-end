@@ -7,7 +7,7 @@ import Button from '@/app/components/Button';
 export default function Login() {
     const router = useRouter();
     const handleLogin = () => {
-        router.push('/screens/Home'); // router.replace('/Home');
+        router.push('/screens/(tabs)/Home'); // router.replace('/Home');
     };
     const handleSignup = () => {
         router.push('/screens/Signup');
