@@ -53,7 +53,7 @@ export default function Onboarding() {
                         <Button text={'Pular'} variant={'secondary'} onPress={handleSkip} />
                     </View>
                     <View style={styles.infosContainer}>
-                        <Image source={require('@/app/assets/images/onboarding-img-1.png')} style={styles.image2} />
+                        <Image source={require('@/app/assets/images/onboarding-img-2.png')} style={styles.image2} />
                         <Text style={styles.title}>Apoio e bem-estar</Text>
                         <Text style={styles.text}>
                             O aplicativo oferece recursos para familiares, cuidadores e administradores, garantindo um
