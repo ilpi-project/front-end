@@ -99,27 +99,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
     },
-    buttonsContainer: {
-        width: '100%',
-        gap: 28,
-        marginTop: 20,
-    },
-    buttonContainer: {
-        alignItems: 'center',
-    },
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: colors.green[100],
-        borderRadius: '50%',
-        width: 70,
-        height: 70,
-    },
-    buttonText: {
-        fontSize: 18,
-        textAlign: 'center',
-        marginTop: 4,
-    },
     membersListContainer: {
         width: '100%',
         marginTop: 40,
