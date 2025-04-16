@@ -46,7 +46,7 @@ export default function Home() {
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.addMemberButton}>
                     <Text style={styles.addMemberButtonText}>Adicionar mais parentes</Text>
-                    <Ionicons name="add" color={colors.white} size={20} />
+                    <Ionicons name="person-add" color={colors.white} size={20} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         height: 120,
     },
     usernameContainer: {
-        backgroundColor: '#2E5E3D',
+        backgroundColor: colors.green[800],
         width: '100%',
         paddingVertical: 8,
         paddingHorizontal: 16,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         marginVertical: 32,
     },
     usernameText: {
-        color: '#ffffff',
+        color: colors.white,
         fontFamily: FONT.OXYGEN_REGULAR,
         fontSize: 18,
     },
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#A9C087',
+        backgroundColor: colors.green[100],
         borderRadius: '50%',
         width: 70,
         height: 70,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         gap: 16,
     },
     memberContainer: {
-        backgroundColor: '#a9c087',
+        backgroundColor: colors.green[100],
         borderRadius: 12,
         flexDirection: 'row',
         alignItems: 'center',
