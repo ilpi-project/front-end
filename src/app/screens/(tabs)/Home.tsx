@@ -7,7 +7,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 export default function Home() {
     const router = useRouter();
     const handleGoToCalendar = () => {
-        router.push('./Calendar');
+        router.push('./Schedule');
     };
     return (
         <View style={styles.container}>
