@@ -43,7 +43,7 @@ export default function Index() {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar style="dark" />
+            <StatusBar style="dark" backgroundColor={colors.beige}/>
             <Onboarding />
         </SafeAreaView>
     );

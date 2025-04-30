@@ -6,8 +6,8 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export default function Home() {
     const router = useRouter();
-    const handleGoToCalendar = () => {
-        router.push('./Schedule');
+    const handleGoToMemberProfile = () => {
+        router.push('/screens/MemberProfile');
     };
     return (
         <View style={styles.container}>
@@ -20,7 +20,7 @@ export default function Home() {
                 <Image source={require('@/app/assets/images/logo.png')} style={styles.icon} />
             </View>
             <View style={styles.membersListContainer}>
-                <TouchableOpacity style={styles.memberContainer}>
+                <TouchableOpacity style={styles.memberContainer} onPress={handleGoToMemberProfile}>
                     <View style={styles.memberInfosContainer}>
                         <Text style={styles.memberInfosText}>José Augusto da Silva</Text>
                         <Text style={styles.memberInfosTextSecondary}>CPF/RG: 000.000.000-00</Text>
