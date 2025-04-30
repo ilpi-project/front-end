@@ -27,7 +27,7 @@ export default function MemberSignup() {
                     <Input icon="medical" placeholder="Condições médicas" /> 
                 </View>
                 <View style={styles.buttonsContainer}>
-                    <Button text="Cadastre-se" variant="primary" style={{ width: '50%' }} onPress={handleMemberSignup} />
+                    <Button text="Cadastrar" variant="primary" style={{ width: '50%' }} onPress={handleMemberSignup} />
                     <Button text="Voltar" variant="secondary" style={{ width: '50%' }} onPress={handleGoBack} />
                 </View>
             </View>
