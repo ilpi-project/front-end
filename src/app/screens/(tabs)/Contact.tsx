@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     },
     contactText: {
         fontSize: 18,
+        fontFamily: FONT.OXYGEN_REGULAR,
         marginVertical: 8,
         gap: 8,
     },

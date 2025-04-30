@@ -117,16 +117,16 @@ export default function Schedule() {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: colors.beige,
+        flex: 1,
+        width: '100%',
+    },
     scrollContainer: {
         flexGrow: 1,
         paddingBottom: 80,
         paddingHorizontal: 28,
         paddingTop: 28,
-    },
-    container: {
-        backgroundColor: colors.beige,
-        flex: 1,
-        width: '100%',
     },
     calendar: {
         backgroundColor: 'transparent',
@@ -180,6 +180,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     dayInput: {
-        width: '85%'
+        width: '85%',
+        fontSize: 16,
+        fontFamily: FONT.OXYGEN_REGULAR
     }
 });

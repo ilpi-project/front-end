@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
         marginLeft: 8,
     },
     serviceText: {
+        fontFamily: FONT.OXYGEN_REGULAR,
         fontSize: 18,
         marginVertical: 8,
     },
