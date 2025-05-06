@@ -3,8 +3,8 @@ import Input from '@/app/components/Input';
 import colors from '@/app/config/colors';
 import FONT from '@/app/config/fonts';
 import { Ionicons } from '@expo/vector-icons';
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
-// import { styles } from "./styles";
+import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import styles  from "./styles";
 
 export default function MemberProfile() {
     return (
@@ -24,29 +24,48 @@ export default function MemberProfile() {
                 <Button text="Editar informações" variant="primary" style={{ width: '70%', alignSelf: 'center' }} />
                 <View style={styles.infosContainer}>
                     <View style={[styles.medicalInfosContainer, { backgroundColor: colors.green[100] }]}>
-                        <View style={styles.textContainer}>
+                        <View>
                             <Text style={styles.subtitle}>Relatório médico</Text>
                             <Text style={styles.infoText}>
                                 Anexe relatórios médicos, prescrições e outros arquivos essenciais para fácil acesso.
                             </Text>
+                            <View>
+                                <TouchableOpacity
+                                    style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        justifyContent: 'flex-end',
+                                    }}>
+                                    <Text
+                                        style={{
+                                            fontFamily: FONT.OXYGEN_REGULAR,
+                                            fontSize: 16,
+                                            color: colors.green[800],
+                                            textDecorationLine: 'underline',
+                                        }}>
+                                        <Ionicons name="download" size={18} color={colors.green[800]} />
+                                        Baixar relatório
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
                     <View style={[styles.medicalInfosContainer, { backgroundColor: colors.green[800] }]}>
-                        <View style={styles.textContainer}>
+                        <View>
                             <Text style={[styles.subtitle, { color: colors.white }]}>Restrição alimentar</Text>
-                            <Text style={[styles.infoText, { color: colors.white }]}>Intolerância à lactose</Text>
-                            <Text style={[styles.infoText, { color: colors.white }]}>Diabetes</Text>
-                            <Text style={[styles.infoText, { color: colors.white }]}>Alergia a frutos do mar</Text>
+                            <Text style={[styles.infoText, { color: colors.white }]}>- Intolerância à lactose</Text>
+                            <Text style={[styles.infoText, { color: colors.white }]}>- Diabetes</Text>
+                            <Text style={[styles.infoText, { color: colors.white }]}>- Alergia a frutos do mar</Text>
                         </View>
-                        <Ionicons name="warning" color={colors.white} />
+                        <Ionicons name="warning" size={80} color={colors.white} />
                     </View>
                     <View style={[styles.medicalInfosContainer, { backgroundColor: colors.green[100] }]}>
-                        <View style={styles.textContainer}>
+                        <View>
                             <Text style={styles.subtitle}>Contato emergencial</Text>
                             <Text style={styles.infoText}>Nome: Felipe da Silva</Text>
                             <Text style={styles.infoText}>Tel.: (11) 9999-9999</Text>
                         </View>
-                        <Ionicons name="call" />
+                        <Ionicons name="call" size={56} color={colors.green[800]} />
                     </View>
                 </View>
                 <View></View>
@@ -56,62 +75,3 @@ export default function MemberProfile() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: colors.beige,
-        flex: 1,
-        width: '100%',
-    },
-    scrollContainer: {
-        flexGrow: 1,
-        paddingBottom: 80,
-        paddingHorizontal: 28,
-        paddingTop: 28,
-        // alignItems: 'center',
-    },
-    memberPicContainer: {
-        backgroundColor: colors.white,
-        borderWidth: 3,
-        borderColor: '#96AC76',
-        borderRadius: '50%',
-        width: 120,
-        height: 120,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 52,
-        alignSelf: 'center',
-    },
-    memberPic: {
-        height: 84,
-        width: 84,
-    },
-    memberPersonalInfos: {
-        marginVertical: 24,
-    },
-    title: {
-        textAlign: 'center',
-        fontFamily: FONT.OXYGEN_BOLD,
-        fontSize: 20,
-    },
-    infosContainer: {
-        gap: 16,
-    },
-    medicalInfosContainer: {
-        borderRadius: 12,
-        paddingVertical: 8,
-        paddingHorizontal: 16,
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    subtitle: {
-        fontSize: 20,
-        fontFamily: FONT.OXYGEN_BOLD,
-    },
-    infoText: {
-        fontSize: 18,
-        fontFamily: FONT.OXYGEN_REGULAR,
-        flexShrink: 1 
-        // width: '100%'
-    },
-    textContainer: {},
-});
