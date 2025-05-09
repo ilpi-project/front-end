@@ -18,11 +18,18 @@ const styles = StyleSheet.create({
     },
     forgotPasswordButton: {
         backgroundColor: 'transparent',
-        marginTop: 12,
+        marginTop: 8,
     },
     forgotPasswordText: {
         color: colors.black,
         textAlign: 'right',
+    },
+    errorMessageContainer: {
+        justifyContent: 'center',
+        height: 35
+    },
+    errorMessageText: {
+        color: colors.red
     },
     buttonsContainer: {
         width: '100%',
