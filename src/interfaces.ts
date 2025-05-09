@@ -8,3 +8,12 @@ export interface Member {
     emergencyNumber: string,
     medicalConditions: string[],
 }
+
+export interface User {
+    _id: string,
+    name: string,
+    cpf: string,
+    email: string,
+    phone: string,
+    birthdate: string,
+}
