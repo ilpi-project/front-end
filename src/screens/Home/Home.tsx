@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import COLORS from '@/config/colors';
 import { useDispatch } from 'react-redux';
 import { setMemberDetails } from '@/store/slices/memberSlice';
-import { formatCPF } from '@/utils/formatters';
+import MemberContainer from '@/components/MemberContainer/MemberContainer';
 
 export const Home = () => {
     const [members, setMembers] = useState<Member[]>([]);
@@ -53,21 +53,7 @@ export const Home = () => {
             </View>
             <View style={styles.membersListContainer}>
                 {members.map((member) => (
-                    <TouchableOpacity
-                        key={member._id}
-                        style={styles.memberContainer}
-                        onPress={() => handleGoToMemberProfile(member)}>
-                        <View style={styles.memberInfosContainer}>
-                            <Text style={styles.memberInfosText}>{member.name}</Text>
-                            <Text style={styles.memberInfosTextSecondary}>CPF: {formatCPF(member.cpf)}</Text>
-                        </View>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                            <View style={styles.memberPicContainer}>
-                                <Image style={styles.memberPic} source={require('@/assets/images/old-man.png')} />
-                            </View>
-                            <Ionicons name="chevron-forward" color={COLORS.green[800]} size={18} />
-                        </View>
-                    </TouchableOpacity>
+                    <MemberContainer member={member} handleGoToMemberProfile={handleGoToMemberProfile} />
                 ))}
                 <TouchableOpacity style={styles.addMemberButton}>
                     <Text style={styles.addMemberButtonText}>Adicionar mais parentes</Text>
