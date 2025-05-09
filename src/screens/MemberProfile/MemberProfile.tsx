@@ -10,8 +10,8 @@ import { RootState } from '@/store';
 import { formatCPF, formatPhone } from '@/utils/formatters';
 
 export const MemberProfile = () => {
-    const member = useSelector((state: RootState) => state.memberDetails.details)
-    
+    const member = useSelector((state: RootState) => state.memberDetails.details);
+
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -57,9 +57,11 @@ export const MemberProfile = () => {
                     <View style={[styles.medicalInfosContainer, { backgroundColor: COLORS.green[800] }]}>
                         <View>
                             <Text style={[styles.subtitle, { color: COLORS.white }]}>Restrição alimentar</Text>
-                            <Text style={[styles.infoText, { color: COLORS.white }]}>- Intolerância à lactose</Text>
-                            <Text style={[styles.infoText, { color: COLORS.white }]}>- Diabetes</Text>
-                            <Text style={[styles.infoText, { color: COLORS.white }]}>- Alergia a frutos do mar</Text>
+                            {member.medicalConditions.map((item, index) => (
+                                <Text key={index} style={[styles.infoText, { color: COLORS.white }]}>
+                                    - {item}
+                                </Text>
+                            ))}
                         </View>
                         <Ionicons name="warning" size={80} color={COLORS.white} />
                     </View>
