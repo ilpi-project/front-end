@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const details = {
     name: '',
     cpf: '',
-    phone: '',
     birthdate: '',
     healthInsurance: '',
     emergencyNumber: '',
