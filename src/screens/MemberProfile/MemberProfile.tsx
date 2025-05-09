@@ -5,8 +5,13 @@ import COLORS from '@/config/colors';
 import FONTS from '@/config/fonts';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { formatCPF, formatPhone } from '@/utils/formatters';
 
 export const MemberProfile = () => {
+    const member = useSelector((state: RootState) => state.memberDetails.details)
+    
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -15,11 +20,10 @@ export const MemberProfile = () => {
                 </View>
                 <View style={styles.memberPersonalInfos}>
                     <Text style={styles.title}>Informações do(a) idoso(a)</Text>
-
-                    <Input icon="person" value="José Augusto da Silva" editable={false} />
-                    <Input icon="id-card" value="000.000.000-00" editable={false} />
-                    <Input icon="call" value="(11) 9999-9999" editable={false} />
-                    <Input icon="medkit" value="NotreDame Intermédica" editable={false} />
+                    <Input icon="person" value={member.name} editable={false} />
+                    <Input icon="id-card" value={formatCPF(member.cpf)} editable={false} />
+                    <Input icon="call" value={formatPhone(member.emergencyNumber)} editable={false} />
+                    <Input icon="medkit" value={member.healthInsurance} editable={false} />
                 </View>
                 <Button text="Editar informações" variant="primary" style={{ width: '70%', alignSelf: 'center' }} />
                 <View style={styles.infosContainer}>

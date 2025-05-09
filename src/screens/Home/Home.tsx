@@ -8,9 +8,13 @@ import { API_BASE_URL } from '@/config/api';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import COLORS from '@/config/colors';
+import { useDispatch } from 'react-redux';
+import { setMemberDetails } from '@/store/slices/memberSlice';
+import { formatCPF } from '@/utils/formatters';
 
 export const Home = () => {
     const [members, setMembers] = useState<Member[]>([]);
+    const dispatch = useDispatch();
 
     const getApi = async () => {
         try {
@@ -20,7 +24,7 @@ export const Home = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            setMembers(response.data)
+            setMembers(response.data);
         } catch (e) {
             console.log('Erro ao buscar membros:', e);
         }
@@ -31,9 +35,12 @@ export const Home = () => {
     }, []);
 
     const router = useRouter();
-    const handleGoToMemberProfile = () => {
+
+    const handleGoToMemberProfile = (member: Member) => {
+        dispatch(setMemberDetails(member));
         router.push('/MemberProfile');
     };
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -46,10 +53,13 @@ export const Home = () => {
             </View>
             <View style={styles.membersListContainer}>
                 {members.map((member) => (
-                    <TouchableOpacity key={member._id} style={styles.memberContainer} onPress={handleGoToMemberProfile}>
+                    <TouchableOpacity
+                        key={member._id}
+                        style={styles.memberContainer}
+                        onPress={() => handleGoToMemberProfile(member)}>
                         <View style={styles.memberInfosContainer}>
                             <Text style={styles.memberInfosText}>{member.name}</Text>
-                            <Text style={styles.memberInfosTextSecondary}>CPF: {member.cpf}</Text>
+                            <Text style={styles.memberInfosTextSecondary}>CPF: {formatCPF(member.cpf)}</Text>
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                             <View style={styles.memberPicContainer}>
@@ -66,5 +76,4 @@ export const Home = () => {
             </View>
         </View>
     );
-}
-
+};
