@@ -3,6 +3,7 @@ const colors = {
     white: '#FFFFFF',
 
     beige: '#F5E6CC',
+    red: '#B82D2E',
     green: {
         800: '#2E5E3D',
         400: '#6B9829',
