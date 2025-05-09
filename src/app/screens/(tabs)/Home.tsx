@@ -1,10 +1,36 @@
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'expo-router';
+import axios from 'axios';
 import colors from '@/app/config/colors';
 import FONT from '@/app/config/fonts';
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { API_BASE_URL } from '@/app/config/api/config.local';
+import { Member } from '@/app/interfaces';
 
 export default function Home() {
+    const [members, setMembers] = useState<Member[]>([]);
+
+    const getApi = async () => {
+        try {
+            const token = await AsyncStorage.getItem('userToken');
+            const response = await axios.get(`${API_BASE_URL}/members`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setMembers(response.data)
+            console.log(response.data);
+        } catch (e) {
+            console.log('Erro ao buscar membros:', e);
+        }
+    };
+
+    useEffect(() => {
+        getApi();
+    }, []);
+
     const router = useRouter();
     const handleGoToMemberProfile = () => {
         router.push('/screens/MemberProfile');
@@ -20,34 +46,20 @@ export default function Home() {
                 <Image source={require('@/app/assets/images/logo.png')} style={styles.icon} />
             </View>
             <View style={styles.membersListContainer}>
-                <TouchableOpacity style={styles.memberContainer} onPress={handleGoToMemberProfile}>
-                    <View style={styles.memberInfosContainer}>
-                        <Text style={styles.memberInfosText}>José Augusto da Silva</Text>
-                        <Text style={styles.memberInfosTextSecondary}>CPF/RG: 000.000.000-00</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                        <View style={styles.memberPicContainer}>
-                            <Image style={styles.memberPic} source={require('@/app/assets/images/old-man.png')} />
+                {members.map((member) => (
+                    <TouchableOpacity key={member._id} style={styles.memberContainer} onPress={handleGoToMemberProfile}>
+                        <View style={styles.memberInfosContainer}>
+                            <Text style={styles.memberInfosText}>{member.name}</Text>
+                            <Text style={styles.memberInfosTextSecondary}>CPF: {member.cpf}</Text>
                         </View>
-                        <Ionicons name="chevron-forward" color={colors.green[800]} size={18} />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.memberContainer}>
-                    <View style={styles.memberInfosContainer}>
-                        <Text style={styles.memberInfosText}>Maria Antônia de Jesus</Text>
-                        <Text style={styles.memberInfosTextSecondary}>CPF/RG: 000.000.000-00</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                        <View style={styles.memberPicContainer}>
-                            <Image style={styles.memberPic} source={require('@/app/assets/images/old-woman.png')} />
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                            <View style={styles.memberPicContainer}>
+                                <Image style={styles.memberPic} source={require('@/app/assets/images/old-man.png')} />
+                            </View>
+                            <Ionicons name="chevron-forward" color={colors.green[800]} size={18} />
                         </View>
-                        <Ionicons name="chevron-forward" color={colors.green[800]} size={18} />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.addMemberButton}>
-                    <Text style={styles.addMemberButtonText}>Adicionar mais parentes</Text>
-                    <Ionicons name="person-add" color={colors.white} size={20} />
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                ))}
             </View>
         </View>
     );
