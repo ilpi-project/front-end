@@ -5,6 +5,7 @@ import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import COLORS from '@/config/colors';
+import { formatDate } from '@/utils/formatters';
 
 export const Schedule = () => {
     const todayDate = new Date();
@@ -16,11 +17,6 @@ export const Schedule = () => {
         timestamp: todayDate.getTime(),
     };
     const [day, setDay] = useState<DateData>(today);
-
-    const formatDate = (date: string) => {
-        const [year, month, day] = date.split('-')
-        return `${day}/${month}/${year}`
-    }
 
     LocaleConfig.locales['br'] = {
         monthNames: [
