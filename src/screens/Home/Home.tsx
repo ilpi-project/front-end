@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
@@ -8,30 +8,45 @@ import { API_BASE_URL } from '@/config/api';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import COLORS from '@/config/colors';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setMemberDetails } from '@/store/slices/memberSlice';
 import MemberContainer from '@/components/MemberContainer/MemberContainer';
+import { setUserDetails } from '@/store/slices/userSlice';
+import { setMembersList } from '@/store/slices/membersListSlice';
+import { RootState } from '@/store';
 
 export const Home = () => {
-    const [members, setMembers] = useState<Member[]>([]);
+    const members = useSelector((state: RootState) => state.membersList.membersList);
     const dispatch = useDispatch();
 
-    const getApi = async () => {
-        try {
-            const token = await AsyncStorage.getItem('userToken');
-            const response = await axios.get(`${API_BASE_URL}/members`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setMembers(response.data);
-        } catch (e) {
-            console.log('Erro ao buscar membros:', e);
-        }
-    };
-
     useEffect(() => {
-        getApi();
+        const getUser = async () => {
+            try {
+                const userId = await AsyncStorage.getItem('userId');
+                if (userId) {
+                    const response = await axios.get(`${API_BASE_URL}/users/${userId}`);
+                    dispatch(setUserDetails(response.data));
+                }
+            } catch (e) {
+                console.log('Erro ao buscar usuário', e);
+            }
+        };
+        const getMembers = async () => {
+            try {
+                const token = await AsyncStorage.getItem('userToken');
+                const response = await axios.get(`${API_BASE_URL}/members`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                dispatch(setMembersList(response.data));
+            } catch (e) {
+                console.log('Erro ao buscar membros:', e);
+            }
+        };
+
+        getUser();
+        getMembers();
     }, []);
 
     const router = useRouter();
@@ -53,7 +68,11 @@ export const Home = () => {
             </View>
             <View style={styles.membersListContainer}>
                 {members.map((member) => (
-                    <MemberContainer member={member} handleGoToMemberProfile={handleGoToMemberProfile} />
+                    <MemberContainer
+                        key={member._id}
+                        member={member}
+                        handleGoToMemberProfile={handleGoToMemberProfile}
+                    />
                 ))}
                 <TouchableOpacity style={styles.addMemberButton}>
                     <Text style={styles.addMemberButtonText}>Adicionar mais parentes</Text>

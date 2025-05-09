@@ -5,8 +5,24 @@ import Input from '@/components/Input/Input';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import COLORS from '@/config/colors';
+import { Member } from '@/interfaces';
+import { formatPhone } from '@/utils/formatters';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import MemberContainer from '@/components/MemberContainer/MemberContainer';
+import { router } from 'expo-router';
+import { setMemberDetails } from '@/store/slices/memberSlice';
 
 export const Profile = () => {
+    const user = useSelector((state: RootState) => state.userDetails.details);
+    const members = useSelector((state: RootState) => state.membersList.membersList);
+    const dispatch = useDispatch();
+
+    const handleGoToMemberProfile = (member: Member) => {
+        dispatch(setMemberDetails(member));
+        router.push('/MemberProfile');
+    };
+
     return (
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.container}>
@@ -15,38 +31,21 @@ export const Profile = () => {
                 </View>
                 <View style={styles.profileInfosContainer}>
                     <Text style={styles.title}>Informações do Perfil</Text>
-                    <Input icon="person" value="Felipe da Silva" editable={false} />
-                    <Input icon="mail" value="fsilva@gmail.com" editable={false} />
-                    <Input icon="call" value="(11) 9999-9999" editable={false} />
+                    <Input icon="person" value={user.name} editable={false} />
+                    <Input icon="mail" value={user.email} editable={false} />
+                    <Input icon="call" value={formatPhone(user.phone)} editable={false} />
                 </View>
                 <Button text="Editar informações" variant="primary" style={{ width: '70%' }} />
                 <View style={styles.membersContainer}>
                     <Text style={styles.subtitle}>Cadastros Ativos</Text>
                     <View style={styles.membersListContainer}>
-                        <TouchableOpacity style={styles.memberContainer}>
-                            <View style={styles.memberInfosContainer}>
-                                <Text style={styles.memberInfosText}>José Augusto da Silva</Text>
-                                <Text style={styles.memberInfosTextSecondary}>CPF/RG: 000.000.000-00</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                                <View style={styles.memberPicContainer}>
-                                    <Image style={styles.memberPic} source={require('@/assets/images/old-man.png')} />
-                                </View>
-                                <Ionicons name="chevron-forward" color={COLORS.green[800]} size={18} />
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.memberContainer}>
-                            <View style={styles.memberInfosContainer}>
-                                <Text style={styles.memberInfosText}>Maria Antônia de Jesus</Text>
-                                <Text style={styles.memberInfosTextSecondary}>CPF/RG: 000.000.000-00</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                                <View style={styles.memberPicContainer}>
-                                    <Image style={styles.memberPic} source={require('@/assets/images/old-woman.png')} />
-                                </View>
-                                <Ionicons name="chevron-forward" color={COLORS.green[800]} size={18} />
-                            </View>
-                        </TouchableOpacity>
+                        {members.map((member) => (
+                            <MemberContainer
+                                key={member._id}
+                                member={member}
+                                handleGoToMemberProfile={handleGoToMemberProfile}
+                            />
+                        ))}
                         <TouchableOpacity style={styles.addMemberButton}>
                             <Text style={styles.addMemberButtonText}>Adicionar mais parentes</Text>
                             <Ionicons name="person-add" color={COLORS.white} size={20} />
