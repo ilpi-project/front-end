@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
@@ -18,25 +18,28 @@ export const Signup = () => {
     };
 
     return (
-        <View style={styles.container}>
-            <Image source={require('@/assets/images/logo.png')} style={styles.logo} />
-            <Text style={styles.title}>Crie sua conta</Text>
-            <View style={styles.inputsContainer}>
-                <Input icon="person" placeholder="Nome" keyboardType="default" />
-                <Input icon="mail" placeholder="E-mail" keyboardType="email-address" />
-                <DateInput placeholder="Data de nascimento (DD/MM/AAAA)" />
-                <Input icon="lock-closed" placeholder="Senha" secureTextEntry />
-                <Input icon="lock-closed" placeholder="Confirmar senha" secureTextEntry />
+        <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
+            <View style={styles.container}>
+                <Image source={require('@/assets/images/logo.png')} style={styles.logo} />
+                <Text style={styles.title}>Crie sua conta</Text>
+                <View style={styles.inputsContainer}>
+                    <Input icon="person" placeholder="Nome" keyboardType="default" />
+                    <Input icon="mail" placeholder="E-mail" keyboardType="email-address" />
+                    <Input icon="call" placeholder="Contato" keyboardType="numeric" />
+                    <DateInput placeholder="Data de nascimento (DD/MM/AAAA)" />
+                    <Input icon="lock-closed" placeholder="Senha" secureTextEntry />
+                    <Input icon="lock-closed" placeholder="Confirmar senha" secureTextEntry />
+                </View>
+                <View style={styles.buttonsContainer}>
+                    <Button
+                        text="Cadastre-se"
+                        variant="primary"
+                        style={{ width: '50%' }}
+                        onPress={handleGoToMemberSignupPage}
+                    />
+                    <Button text="Voltar" variant="secondary" style={{ width: '50%' }} onPress={handleGoBack} />
+                </View>
             </View>
-            <View style={styles.buttonsContainer}>
-                <Button
-                    text="Cadastre-se"
-                    variant="primary"
-                    style={{ width: '50%' }}
-                    onPress={handleGoToMemberSignupPage}
-                />
-                <Button text="Voltar" variant="secondary" style={{ width: '50%' }} onPress={handleGoBack} />
-            </View>
-        </View>
+        </ScrollView>
     );
 };

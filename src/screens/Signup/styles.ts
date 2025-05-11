@@ -3,11 +3,17 @@ import COLORS from '@/config/colors';
 import FONTS from '@/config/fonts';
 
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'flex-end',
+    scrollContainer: {
+        flexGrow: 1,
+        justifyContent: 'center',
         alignItems: 'center',
+        paddingVertical: 20,
         backgroundColor: COLORS.beige,
+    },
+    container: {
+        backgroundColor: COLORS.beige,
+        width: '100%',
+        alignItems: 'center',
     },
     logo: {
         height: 180,
