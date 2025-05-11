@@ -39,5 +39,6 @@ export const styles = StyleSheet.create({
     memberPic: {
         width: 64,
         height: 64,
+        borderRadius: 100
     },
 })

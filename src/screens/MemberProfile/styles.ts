@@ -27,8 +27,9 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     memberPic: {
-        height: 84,
-        width: 84,
+        height: '100%',
+        width: '100%',
+        borderRadius: 100,
     },
     memberPersonalInfos: {
         marginVertical: 24,
