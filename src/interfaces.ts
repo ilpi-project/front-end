@@ -5,7 +5,6 @@ export interface Member {
     phone: string,
     birthdate: string,
     healthInsurance: string,
-    emergencyNumber: string,
     medicalConditions: string[],
 }
 

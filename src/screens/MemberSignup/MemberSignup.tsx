@@ -23,7 +23,6 @@ export const MemberSignup = () => {
                     <DateInput placeholder="Data de nascimento (DD/MM/AAAA)" />
                     <Input icon="id-card" placeholder="CPF" keyboardType="numeric" />
                     <Input icon="medkit" placeholder="Plano de saúde" />
-                    <Input icon="call" placeholder="Contato de emergência" keyboardType="numeric" />
                     <Input icon="medical" placeholder="Condições médicas" />
                 </View>
                 <View style={styles.buttonsContainer}>

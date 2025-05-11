@@ -24,7 +24,6 @@ export const MemberProfile = () => {
                     <Text style={styles.title}>Informações do(a) idoso(a)</Text>
                     <Input icon="person" value={member.name} editable={false} />
                     <Input icon="id-card" value={formatCPF(member.cpf)} editable={false} />
-                    <Input icon="call" value={formatPhone(member.emergencyNumber)} editable={false} />
                     <Input icon="medkit" value={member.healthInsurance} editable={false} />
                 </View>
                 <Button text="Editar informações" variant="primary" style={{ width: '70%', alignSelf: 'center' }} />
@@ -70,14 +69,12 @@ export const MemberProfile = () => {
                     <View style={[styles.medicalInfosContainer, { backgroundColor: COLORS.green[100] }]}>
                         <View>
                             <Text style={styles.subtitle}>Contato emergencial</Text>
-                            <Text style={styles.infoText}>Nome: Felipe da Silva</Text>
-                            <Text style={styles.infoText}>Tel.: (11) 9999-9999</Text>
+                            <Text style={styles.infoText}>Nome: {member.user.name}</Text>
+                            <Text style={styles.infoText}>Tel.: {formatPhone(member.user.phone)}</Text>
                         </View>
                         <Ionicons name="call" size={56} color={COLORS.green[800]} />
                     </View>
                 </View>
-                <View></View>
-                <View></View>
             </ScrollView>
         </View>
     );
