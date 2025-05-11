@@ -6,8 +6,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import COLORS from '@/config/colors';
 import { formatDate } from '@/utils/formatters';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 export const Schedule = () => {
+    const events = useSelector((state: RootState) => state.eventsList.eventsList);
+
     const todayDate = new Date();
     const today: DateData = {
         dateString: todayDate.toISOString().split('T')[0],
@@ -41,6 +45,25 @@ export const Schedule = () => {
 
     LocaleConfig.defaultLocale = 'br';
 
+    const marked = events.reduce((acc, event) => {
+        const date = event.date.split('T')[0];
+        acc[date] = {
+            ...(acc[date] || {}),
+            marked: true,
+            dotColor: COLORS.green[800],
+        };
+        return acc;
+    }, {} as Record<string, any>);
+
+    if (day?.dateString) {
+        marked[day.dateString] = {
+            ...(marked[day.dateString] || {}),
+            selected: true,
+            selectedColor: COLORS.green[400],
+            selectedTextColor: COLORS.white,
+        };
+    }
+
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -68,47 +91,29 @@ export const Schedule = () => {
                     }}
                     enableSwipeMonths={true}
                     onDayPress={setDay}
-                    markedDates={
-                        day && {
-                            [day.dateString]: { selected: true, selectedColor: COLORS.green[400] },
-                        }
-                    }
+                    markedDates={marked}
                 />
                 <View style={styles.schedulesContainer}>
                     <Text style={styles.schedulesTitle}>Agendamentos da semana</Text>
-                    <TouchableOpacity style={styles.schedule}>
-                        <View style={styles.scheduleTextContainer}>
-                            <Text style={styles.scheduleText}>Visita Familiar</Text>
-                            <Text style={styles.scheduleText}>19/02</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.schedule}>
-                        <View style={styles.scheduleTextContainer}>
-                            <Text style={styles.scheduleText}>Visita Familiar</Text>
-                            <Text style={styles.scheduleText}>19/02</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.schedule}>
-                        <View style={styles.scheduleTextContainer}>
-                            <Text style={styles.scheduleText}>Visita Familiar</Text>
-                            <Text style={styles.scheduleText}>19/02</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.schedule}>
-                        <View style={styles.scheduleTextContainer}>
-                            <Text style={styles.scheduleText}>Visita Familiar</Text>
-                            <Text style={styles.scheduleText}>19/02</Text>
-                        </View>
-                    </TouchableOpacity>
+                    {events.map((event) => (
+                        <TouchableOpacity key={event._id} style={styles.schedule}>
+                            <View style={styles.scheduleTextContainer}>
+                                <Text style={styles.scheduleText}>{event.name}</Text>
+                                <Text style={styles.scheduleText}>{formatDate(event.date)}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    ))}
                 </View>
             </ScrollView>
             <View style={styles.dayInputContainer}>
-                <TextInput placeholder={"Agendar compromisso em " + formatDate(day.dateString)} style={styles.dayInput} />
+                <TextInput
+                    placeholder={'Agendar compromisso em ' + formatDate(day.dateString)}
+                    style={styles.dayInput}
+                />
                 <TouchableOpacity>
-                    <Ionicons name="add-circle" size={30} color={COLORS.green[800]}/>
+                    <Ionicons name="add-circle" size={30} color={COLORS.green[800]} />
                 </TouchableOpacity>
             </View>
         </View>
     );
-}
-
+};
