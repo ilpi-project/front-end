@@ -12,11 +12,14 @@ import { RootState } from '@/store';
 import MemberContainer from '@/components/MemberContainer/MemberContainer';
 import { router } from 'expo-router';
 import { setMemberDetails } from '@/store/slices/memberSlice';
+import { API_BASE_URL } from '@/config/api';
 
 export const Profile = () => {
     const user = useSelector((state: RootState) => state.userDetails.details);
     const members = useSelector((state: RootState) => state.membersList.membersList);
     const dispatch = useDispatch();
+
+    const imageUrl = `${API_BASE_URL}/users/${user._id}/image`;
 
     const handleGoToMemberProfile = (member: Member) => {
         dispatch(setMemberDetails(member));
@@ -27,7 +30,7 @@ export const Profile = () => {
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.container}>
                 <View style={styles.profilePicContainer}>
-                    <Image style={styles.profilePic} source={require('@/assets/images/man.png')} />
+                    <Image style={styles.profilePic} source={{ uri: imageUrl }} />
                 </View>
                 <View style={styles.profileInfosContainer}>
                     <Text style={styles.title}>Informações do Perfil</Text>
