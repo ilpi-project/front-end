@@ -8,15 +8,17 @@ import { styles } from './styles';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { formatCPF, formatPhone } from '@/utils/formatters';
+import { API_BASE_URL } from '@/config/api';
 
 export const MemberProfile = () => {
     const member = useSelector((state: RootState) => state.memberDetails.details);
+    const imageUrl = `${API_BASE_URL}/members/${member._id}/image`;
 
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <View style={styles.memberPicContainer}>
-                    <Image style={styles.memberPic} source={require('@/assets/images/old-man.png')} />
+                    <Image style={styles.memberPic} source={{ uri: imageUrl }} />
                 </View>
                 <View style={styles.memberPersonalInfos}>
                     <Text style={styles.title}>Informações do(a) idoso(a)</Text>

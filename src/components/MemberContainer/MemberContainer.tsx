@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { Member } from '@/interfaces';
 import { formatCPF } from '@/utils/formatters';
 import COLORS from '@/config/colors';
+import { API_BASE_URL } from '@/config/api';
 
 interface MemberContainerProps {
     member: Member;
@@ -11,6 +12,8 @@ interface MemberContainerProps {
 }
 
 export default function MemberContainer({ member, handleGoToMemberProfile }: MemberContainerProps) {
+    const imageUrl = `${API_BASE_URL}/members/${member._id}/image`;
+
     return (
         <TouchableOpacity
             key={member._id}
@@ -22,7 +25,7 @@ export default function MemberContainer({ member, handleGoToMemberProfile }: Mem
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                 <View style={styles.memberPicContainer}>
-                    <Image style={styles.memberPic} source={require('@/assets/images/old-man.png')} />
+                    <Image style={styles.memberPic} source={{ uri: imageUrl }} />
                 </View>
                 <Ionicons name="chevron-forward" color={COLORS.green[800]} size={18} />
             </View>
