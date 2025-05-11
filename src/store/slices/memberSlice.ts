@@ -6,8 +6,11 @@ const details = {
     cpf: '',
     birthdate: '',
     healthInsurance: '',
-    emergencyNumber: '',
-    medicalConditions: []
+    medicalConditions: [],
+    user: {
+        name: '',
+        phone: '',
+    },
 };
 
 export const memberDetailsSlice = createSlice({
