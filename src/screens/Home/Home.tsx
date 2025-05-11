@@ -14,6 +14,7 @@ import MemberContainer from '@/components/MemberContainer/MemberContainer';
 import { setUserDetails } from '@/store/slices/userSlice';
 import { setMembersList } from '@/store/slices/membersListSlice';
 import { RootState } from '@/store';
+import { setEventsList } from '@/store/slices/eventListSlice';
 
 export const Home = () => {
     const members = useSelector((state: RootState) => state.membersList.membersList);
@@ -28,7 +29,7 @@ export const Home = () => {
                     dispatch(setUserDetails(response.data));
                 }
             } catch (e) {
-                console.log('Erro ao buscar usuário', e);
+                console.log('Erro ao buscar usuário: ', e);
             }
         };
         const getMembers = async () => {
@@ -41,12 +42,27 @@ export const Home = () => {
                 });
                 dispatch(setMembersList(response.data));
             } catch (e) {
-                console.log('Erro ao buscar membros:', e);
+                console.log('Erro ao buscar membros: ', e);
+            }
+        };
+
+        const getEvents = async () => {
+            try {
+                const token = await AsyncStorage.getItem('userToken');
+                const response = await axios.get(`${API_BASE_URL}/events`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                dispatch(setEventsList(response.data));
+            } catch (e) {
+                console.log('Erro ao buscar eventos: ', e);
             }
         };
 
         getUser();
         getMembers();
+        getEvents();
     }, []);
 
     const router = useRouter();
