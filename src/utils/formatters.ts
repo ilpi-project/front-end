@@ -7,6 +7,7 @@ export const formatPhone = (phone: string) => {
 };
 
 export const formatDate = (date: string) => {
-    const [year, month, day] = date.split('-');
-    return `${day}/${month}/${year}`;
+  const onlyDate = date.includes('T') ? date.split('T')[0] : date;
+  const [year, month, day] = onlyDate.split('-');
+  return `${day}/${month}/${year}`;
 };
