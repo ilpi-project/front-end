@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import userDetailsReducer from './slices/userSlice';
 import memberDetailsReducer from './slices/memberSlice';
 import membersListReducer from './slices/membersListSlice';
-import eventsListReducer from './slices/eventListSlice'
+import eventsListReducer from './slices/eventListSlice';
 
 export const store = configureStore({
     reducer: {

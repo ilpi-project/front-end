@@ -1,9 +1,9 @@
-import { StyleSheet } from "react-native";
-import COLORS from "@/config/colors";
-import FONTS from "@/config/fonts";
+import { StyleSheet } from 'react-native';
+import COLORS from '@/config/colors';
+import FONTS from '@/config/fonts';
 
 export const styles = StyleSheet.create({
-        memberContainer: {
+    memberContainer: {
         backgroundColor: COLORS.green[100],
         borderRadius: 12,
         flexDirection: 'row',
@@ -39,6 +39,6 @@ export const styles = StyleSheet.create({
     memberPic: {
         width: 64,
         height: 64,
-        borderRadius: 100
+        borderRadius: 100,
     },
-})
+});

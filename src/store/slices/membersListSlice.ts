@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Member } from "@/interfaces";
+import { createSlice } from '@reduxjs/toolkit';
+import { Member } from '@/interfaces';
 
-const membersList: Member[] = []
+const membersList: Member[] = [];
 
 export const membersListSlice = createSlice({
     name: 'membersList',
     initialState: {
-        membersList
+        membersList,
     },
     reducers: {
         setMembersList: (state, action) => {

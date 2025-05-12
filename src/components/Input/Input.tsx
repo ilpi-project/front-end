@@ -25,4 +25,4 @@ export default function Input({ icon, showPasswordIcon, onShowPasswordIconPress,
             )}
         </View>
     );
-};
+}

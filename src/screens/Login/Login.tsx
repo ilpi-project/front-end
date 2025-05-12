@@ -28,7 +28,7 @@ export const Login = () => {
             router.push('/(tabs)/Home');
         } catch (e) {
             setErrorMessage('E-mail ou senha inválidos');
-            console.log(e)
+            console.log(e);
         }
     };
     const handleSignup = () => {
