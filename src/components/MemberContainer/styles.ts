@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 16,
         width: '100%',
         justifyContent: 'space-between',
-        borderColor: '#96AC76',
+        borderColor: COLORS.green[200],
         borderWidth: 3,
     },
     memberInfosContainer: {
@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
         fontFamily: FONTS.OXYGEN_REGULAR,
     },
     memberPicContainer: {
-        backgroundColor: '#96AC76',
+        backgroundColor: COLORS.green[200],
         borderRadius: '50%',
         width: 72,
         height: 72,

@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     memberPicContainer: {
         backgroundColor: COLORS.white,
         borderWidth: 3,
-        borderColor: '#96AC76',
+        borderColor: COLORS.green[200],
         borderRadius: '50%',
         width: 120,
         height: 120,
