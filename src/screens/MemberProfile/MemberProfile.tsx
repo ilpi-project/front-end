@@ -10,15 +10,23 @@ import { RootState } from '@/store';
 import { formatCPF, formatPhone } from '@/utils/formatters';
 import { API_BASE_URL } from '@/config/api';
 import { useAuth } from '@/hooks/useAuth';
+import { router } from 'expo-router';
 
 export const MemberProfile = () => {
     const member = useSelector((state: RootState) => state.memberDetails.details);
     const imageUrl = `${API_BASE_URL}/members/${member._id}/image`;
+
+    const handleGoBack = () => {
+        router.back();
+    };
     useAuth();
 
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
+                <View style={styles.backButtonContainer}>
+                    <Ionicons name="arrow-undo" size={34} color={COLORS.green[800]} onPress={handleGoBack} />
+                </View>
                 <View style={styles.memberPicContainer}>
                     <Image style={styles.memberPic} source={{ uri: imageUrl }} />
                 </View>

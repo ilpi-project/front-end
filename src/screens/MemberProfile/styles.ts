@@ -14,6 +14,15 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 28,
         paddingTop: 28,
     },
+    backButtonContainer: {
+        position: 'absolute',
+        top: 68,
+        left: 24,
+        alignItems: 'flex-start',
+        boxSizing: 'border-box',
+        justifyContent: 'center',
+    },
+
     memberPicContainer: {
         backgroundColor: COLORS.white,
         borderWidth: 3,
