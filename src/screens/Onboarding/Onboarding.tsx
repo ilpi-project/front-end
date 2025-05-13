@@ -9,7 +9,7 @@ import COLORS from '@/config/colors';
 export const Onboarding = () => {
     const router = useRouter();
     const handleSkip = () => {
-        router.push('/Login'); // router.replace('/Login');
+        router.replace('/Login'); 
     };
 
     const swiperRef = useRef<Swiper | null>(null);
