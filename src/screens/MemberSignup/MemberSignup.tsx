@@ -10,9 +10,11 @@ export const MemberSignup = () => {
     const handleGoBack = () => {
         router.back();
     };
+    
     const handleMemberSignup = () => {
-        router.push('/(tabs)/Home');
+        router.replace('/(stacks)/Login');
     };
+
     return (
         <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
             <View style={styles.container}>

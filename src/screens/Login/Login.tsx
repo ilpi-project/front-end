@@ -25,10 +25,9 @@ export const Login = () => {
             });
             await AsyncStorage.setItem('userToken', response.data.token);
             await AsyncStorage.setItem('userId', response.data.userId);
-            router.push('/(tabs)/Home');
+            router.replace('/(tabs)/Home');
         } catch (e) {
             setErrorMessage('E-mail ou senha inválidos');
-            console.log(e);
         }
     };
     const handleSignup = () => {
