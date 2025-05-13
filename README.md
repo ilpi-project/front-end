@@ -58,6 +58,12 @@ Volte para a pasta raiz e inicie o servidor
 npm start
 ```
 
+**Dica:** Para acessar o aplicativo, use as seguintes credenciais de exemplo:
+
+- **Email:** `joao@gmail.com`
+- **Senha:** `12345`
+
+
 ## ✅ Funcionalidades
 - Login e autenticação com JWT
 - Cadastro de usuários com foto
