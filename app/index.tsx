@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Onboarding } from '@/screens/Onboarding/Onboarding';
 import COLORS from '@/config/colors';
+import 'setimmediate';
 
 export default function Index() {
     const [appReady, setAppReady] = useState(false);
