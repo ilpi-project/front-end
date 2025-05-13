@@ -4,8 +4,11 @@ import Header from '@/components/Header/Header';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import COLORS from '@/config/colors';
+import { useAuth } from '@/hooks/useAuth';
 
 export const Services = () => {
+    useAuth();
+    
     return (
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.container}>

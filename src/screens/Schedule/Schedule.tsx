@@ -8,9 +8,11 @@ import COLORS from '@/config/colors';
 import { formatDate } from '@/utils/formatters';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { useAuth } from '@/hooks/useAuth';
 
 export const Schedule = () => {
     const events = useSelector((state: RootState) => state.eventsList.eventsList);
+    useAuth();
 
     const todayDate = new Date();
     const today: DateData = {

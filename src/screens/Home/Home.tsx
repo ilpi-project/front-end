@@ -15,10 +15,12 @@ import { setUserDetails } from '@/store/slices/userSlice';
 import { setMembersList } from '@/store/slices/membersListSlice';
 import { RootState } from '@/store';
 import { setEventsList } from '@/store/slices/eventListSlice';
+import { useAuth } from '@/hooks/useAuth';
 
 export const Home = () => {
     const members = useSelector((state: RootState) => state.membersList.membersList);
     const dispatch = useDispatch();
+    useAuth();
 
     useEffect(() => {
         const getUser = async () => {

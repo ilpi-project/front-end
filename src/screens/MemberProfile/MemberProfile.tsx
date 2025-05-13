@@ -9,10 +9,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { formatCPF, formatPhone } from '@/utils/formatters';
 import { API_BASE_URL } from '@/config/api';
+import { useAuth } from '@/hooks/useAuth';
 
 export const MemberProfile = () => {
     const member = useSelector((state: RootState) => state.memberDetails.details);
     const imageUrl = `${API_BASE_URL}/members/${member._id}/image`;
+    useAuth();
 
     return (
         <View style={styles.container}>
