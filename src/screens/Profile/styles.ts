@@ -73,4 +73,17 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: FONTS.OXYGEN_BOLD,
     },
+    logoutButton: {
+        borderRadius: 24,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 8,
+        backgroundColor: COLORS.red,
+        width: '100%',
+    },
+    logoutButtonText: {
+        color: COLORS.white,
+        fontFamily: FONTS.OXYGEN_BOLD,
+        fontSize: 18,
+    },
 });
