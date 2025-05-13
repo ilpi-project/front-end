@@ -1,5 +1,5 @@
 # 📱 ILPI App 
-
+ILPI App é uma plataforma digital desenvolvida para facilitar a gestão e o acompanhamento de idosos em Instituições de Longa Permanência. O aplicativo oferece funcionalidades voltadas a familiares, cuidadores e administradores, promovendo um cuidado mais eficiente e humanizado.
 
 ---
 
@@ -7,8 +7,6 @@
 
 - [Instalação](#Instalação)
 - [Uso](#uso)
-- [Endpoints](#endpoints)
-- [Formato das Requisições](#formato-das-requisições)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias](#tecnologias)
 
@@ -60,7 +58,6 @@ Volte para a pasta raiz e inicie o servidor
 npm start
 ```
 
-
 ## ✅ Funcionalidades
 - Login e autenticação com JWT
 - Cadastro de usuários com foto
@@ -72,8 +69,6 @@ npm start
 
 ## 🧰 Tecnologias
 
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![Mongoose](https://img.shields.io/badge/mongoose-%2300f.svg?style=for-the-badge&logo=mongoose&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
