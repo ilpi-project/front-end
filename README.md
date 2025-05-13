@@ -1,50 +1,79 @@
-# Welcome to your Expo app 👋
+# 📱 ILPI App 
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+---
 
-1. Install dependencies
+## 📑 Índice
 
-   ```bash
-   npm install
-   ```
+- [Instalação](#Instalação)
+- [Uso](#uso)
+- [Endpoints](#endpoints)
+- [Formato das Requisições](#formato-das-requisições)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias](#tecnologias)
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+## 🛠️ Instalação
 
-In the output, you'll find options to open the app in a
+Siga os passos abaixo para instalar e rodar o projeto localmente.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### 1. Clonar o repositório
 ```bash
-npm run reset-project
+git clone https://github.com/ilpi-project/front-end.git
+```
+### 2. Entrar no diretório do frontend
+```bash
+cd front-end
+```
+### 3. Instalar as dependências
+```bash
+npm install
+```
+### 4. Entrar no diretório config
+```bash
+cd src
+```
+```bash
+cd config
+```
+### 5. Criar o arquivo api.ts baseado no api.example.ts
+Linux/Mac/Git Bash
+```bash
+cp api.example.ts api.ts
+```
+Windows PowerShell
+```powershell
+Copy-Item api.example.ts api.ts
+```
+Windows CMD
+```cmd
+copy api.example.ts api.ts
+```
+### 6. No arquivo api.ts, troque localhost pelo IP da máquina
+```typescript
+export const API_BASE_URL = 'http://SEU_IP_LOCAL:3000';
+```
+## 🚀 Uso
+Volte para a pasta raiz e inicie o servidor
+```bash
+npm start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+## ✅ Funcionalidades
+- Login e autenticação com JWT
+- Cadastro de usuários com foto
+- Visualização e gerenciamento de membros vinculados
+- Criação e listagem de eventos
+- Comunicação com API externa (backend Node.js)
+- Armazenamento de token com AsyncStorage
+- Navegação com expo-router
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🧰 Tecnologias
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Mongoose](https://img.shields.io/badge/mongoose-%2300f.svg?style=for-the-badge&logo=mongoose&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
